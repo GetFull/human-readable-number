@@ -32,28 +32,6 @@ module.exports = function toReadable(number) {
         90: "ninety",
     };
 
-    // if (numLength === 1) {
-    //     return ten[number.toString()[0]];
-    // }
-
-    // if (numLength === 2) {
-    //     return (
-    //         ten[number.toString()[0] + number.toString()[1]] ||
-    //         ten[number.toString()[0] * 10] + " " + ten[number.toString()[1]]
-    //     );
-    // }
-
-    // if (numLength === 3) {
-    //     return (
-    //         ten[number.toString()[0]] +
-    //         " hundred " +
-    //         (ten[number.toString()[1] + number.toString()[2]] ||
-    //             ten[number.toString()[1] * 10] +
-    //                 " " +
-    //                 ten[number.toString()[2]])
-    //     );
-    // }
-
     let result = "";
 
     if (Math.floor(number / 100)) {
