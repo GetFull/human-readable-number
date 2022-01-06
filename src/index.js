@@ -33,17 +33,24 @@ module.exports = function toReadable(number) {
     };
 
     let result = "";
+    // check amount of Hundred !> 9 else return 0
+    const amountOfHundred = Math.floor((number / 100) % 10);
+    // check amount of Tenths !> 9 else return 0
+    const amountTenths = Math.floor((number / 10) % 10);
+    // check amount of Units !> 9 else return 0
+    const amountOfUnits = Math.floor(number % 10);
 
-    if (Math.floor(number / 100)) {
-        result += `${readable[Math.floor(number / 100)]} hundred `;
+    if (Math.floor(amountOfHundred)) {
+        result += `${readable[amountOfHundred]} hundred `;
     }
 
     if (Math.floor(number % 100)) {
+        /*  if (number) remainder of division by 100 !=0 check readable{[keys]} === (remainder of division by 100).
+         Else split (remainder of division by 100) on Tenths and Units. Check them in {readable}
+         */
         result +=
             readable[Math.floor(number % 100)] ||
-            `${readable[Math.floor((number % 100) / 10) * 10]} ${
-                readable[Math.floor(number % 10)]
-            }`;
+            `${readable[amountTenths * 10]} ${readable[amountOfUnits]}`;
     }
 
     return result.trim();
